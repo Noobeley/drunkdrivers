@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class citizen : MonoBehaviour
 {
-    Vector3 moveDirection= Vector3.zero;
+    Vector3 moveDirection = Vector3.zero;
     [SerializeField] private int directionDetermined = 0;
     [SerializeField] private float direction = 1.0f;
     [SerializeField] private float speed = 1.0f;
@@ -15,6 +15,8 @@ public class citizen : MonoBehaviour
 
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
+
+    private Coroutine moveCoroutine;
 
     private void OnEnable()
     {
@@ -43,15 +45,15 @@ public class citizen : MonoBehaviour
 
     private void Update()
     {
-        if (moveDirection == new Vector3(0,0,0))
+        if (moveDirection == Vector3.zero)
         {
             if (isMovingLeft)
             {
-                Vector3 moveDirection = new Vector3(0,1,0);
+                moveDirection = new Vector3(0, 1, 0);
             }
             else if (isMovingRight)
             {
-                Vector3 moveDirection = new Vector3(0,-1,0);
+                moveDirection = new Vector3(0, -1, 0);
             }
         }
         else
@@ -62,29 +64,61 @@ public class citizen : MonoBehaviour
 
     private void StartMovingLeft()
     {
-        isMovingLeft = true;
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+        moveCoroutine = StartCoroutine(MoveLeftCoroutine());
     }
 
     private void StopMovingLeft()
     {
-        isMovingLeft = false;
-        StartCoroutine(DestroyAfterDelay());
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
+    }
+
+    private IEnumerator MoveLeftCoroutine()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < 3f)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        moveDirection = Vector3.zero;
     }
 
     private void StartMovingRight()
     {
-        isMovingRight = true;
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+        moveCoroutine = StartCoroutine(MoveRightCoroutine());
     }
 
     private void StopMovingRight()
     {
-        isMovingRight = false;
-        StartCoroutine(DestroyAfterDelay());
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+            moveCoroutine = null;
+        }
     }
 
-    private IEnumerator DestroyAfterDelay()
+    private IEnumerator MoveRightCoroutine()
     {
-        yield return new WaitForSeconds(4.0f);
-        Destroy(gameObject);
+        float elapsedTime = 0f;
+        while (elapsedTime < 3f)
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        moveDirection = Vector3.zero;
     }
 }
