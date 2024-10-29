@@ -43,14 +43,14 @@ public class NPCPath : MonoBehaviour
     {
         // This is where you take player input to choose the path (e.g. through VR controller buttons)
         // For example, if player presses button A, follow path1, if button B, follow path2.
-        if (Input.GetButtonDown("Fire1"))  // Replace with VR input system as needed
+        if (Input.GetKeyDown(KeyCode.O))  // Replace with VR input system as needed
         {
             isFollowingPath1 = true;
             branchChosen = true;
             currentWaypoint = 0;
             agent.SetDestination(path1Waypoints[currentWaypoint].position);
         }
-        else if (Input.GetButtonDown("Fire2"))  // Replace with VR input system as needed
+        else if (Input.GetKeyDown(KeyCode.P))  // Replace with VR input system as needed
         {
             isFollowingPath1 = false;
             branchChosen = true;
