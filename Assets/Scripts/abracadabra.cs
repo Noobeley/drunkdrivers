@@ -23,7 +23,7 @@ public class NPCTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Check if the object has an NPC script
-        NPC npc = other.GetComponent<NPC>();
+        NpcIdentity npc = other.GetComponent<NpcIdentity>();
         if (npc != null)
         {
             Debug.Log("NPC " + npc.npcID + " entered the collider.");

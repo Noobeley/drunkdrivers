@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NpcIdentity : MonoBehaviour
 {
-    // Unique identifier for each NPC
     public int npcID;
 
-    
+    public bool GoodNPC;
+
     void Start()
     {
-        
+
     }
 }
