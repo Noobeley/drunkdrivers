@@ -3,9 +3,14 @@ using UnityEngine;
 public class GoodRoomTrigger : MonoBehaviour
 {
     [SerializeField] private bool checkGood = true; // Set this room to expect Good NPCs if true
-    [SerializeField] private LightController lightController; // Reference to LightController to trigger sabotage
+    private LightController lightController;
 
-    private void OnTriggerEnter(Collider other)
+    public void Start()
+    {
+        GameObject triggerBox = GameObject.Find("wall (4)");
+        lightController = triggerBox.GetComponent<LightController>();
+    }
+    public void OnTriggerEnter(Collider other)
     {
         // Check if the colliding object has an NpcIdentity component
         NpcIdentity npc = other.GetComponent<NpcIdentity>();
@@ -24,18 +29,18 @@ public class GoodRoomTrigger : MonoBehaviour
         }
     }
 
-    private void TriggerWrongEntryAlert()
-{
-    Debug.Log("Alert! Wrong NPC in the Good NPC room!"); // Step 1: Check alert is triggered
+    public void TriggerWrongEntryAlert()
+    {
+        Debug.Log("Alert! Wrong NPC in the Good NPC room!"); // Step 1: Check alert is triggered
     
-    if (lightController != null)
-    {
-        Debug.Log("LightController is assigned and will trigger TurnOffLights."); // Step 2: Confirm controller exists
-        lightController.TurnOffLights();
+        if (lightController != null)
+        {
+            Debug.Log("LightController is assigned and will trigger TurnOffLights."); // Step 2: Confirm controller exists
+            lightController.TurnOffLights();
+        }
+        else
+        {
+            Debug.LogWarning("LightController is not assigned in GoodRoomTrigger. Please assign it in the Inspector."); // Step 3: Warning for missing assignment
+        }
     }
-    else
-    {
-        Debug.LogWarning("LightController is not assigned in GoodRoomTrigger. Please assign it in the Inspector."); // Step 3: Warning for missing assignment
-    }
-}
 }
