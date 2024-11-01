@@ -5,27 +5,33 @@ public class NPCPath : MonoBehaviour
 {
     public Transform[] path1Waypoints;  // Waypoints for the first path
     public Transform[] path2Waypoints;  // Waypoints for the second path
+    public Transform[] path3Waypoints;  // Waypoints for the third path
+    public Transform[] path4Waypoints;  // Waypoints for the fourth path
     public Transform branchPoint;       // The branching point where the player decides
 
     private NavMeshAgent agent;
     private int currentWaypoint = 0;
-    private bool isFollowingPath1 = true;
+    private int chosenPath = 1;         // 1 for path1, 2 for path2, 3 for path3, 4 for path4
     private bool branchChosen = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
         // Start moving towards the first waypoint of the main path
         agent.SetDestination(path1Waypoints[currentWaypoint].position);
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            // Override to send NPC to path 2 immediately when Y is pressed
+            ChoosePath(2);
+        }
+
         // Move NPC along the chosen path
         if (!branchChosen && Vector3.Distance(transform.position, branchPoint.position) < 1f)
         {
-            // When NPC reaches the branch point, player must decide the path
             PlayerChoosePath();
         }
 
@@ -41,50 +47,76 @@ public class NPCPath : MonoBehaviour
 
     void PlayerChoosePath()
     {
-        // This is where you take player input to choose the path (e.g. through VR controller buttons)
-        // For example, if player presses button A, follow path1, if button B, follow path2.
-        if (Input.GetKeyDown(KeyCode.O))  // Replace with VR input system as needed
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            isFollowingPath1 = true;
-            branchChosen = true;
-            currentWaypoint = 0;
-            agent.SetDestination(path1Waypoints[currentWaypoint].position);
+            ChoosePath(1);
         }
-        else if (Input.GetKeyDown(KeyCode.P))  // Replace with VR input system as needed
+        else if (Input.GetKeyDown(KeyCode.P))
         {
-            isFollowingPath1 = false;
-            branchChosen = true;
-            currentWaypoint = 0;
-            agent.SetDestination(path2Waypoints[currentWaypoint].position);
+            ChoosePath(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ChoosePath(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            ChoosePath(4);
+        }
+    }
+
+    void ChoosePath(int pathNumber)
+    {
+        // Set the chosen path and start the NPC on that path
+        chosenPath = pathNumber;
+        branchChosen = true;
+        currentWaypoint = 0;
+
+        Transform[] selectedPathWaypoints = chosenPath switch
+        {
+            1 => path1Waypoints,
+            2 => path2Waypoints,
+            3 => path3Waypoints,
+            4 => path4Waypoints,
+            _ => null
+        };
+
+        if (selectedPathWaypoints != null && selectedPathWaypoints.Length > 0)
+        {
+            agent.SetDestination(selectedPathWaypoints[currentWaypoint].position);
         }
     }
 
     void MoveToNextWaypoint()
     {
-        // Update current waypoint and set the NPC's destination to the next one
         currentWaypoint++;
 
-        if (isFollowingPath1)
+        Transform[] waypoints = chosenPath switch
         {
-            if (currentWaypoint < path1Waypoints.Length)
-            {
-                agent.SetDestination(path1Waypoints[currentWaypoint].position);
-            }
-            else
-            {
-                // Path complete, you can stop the NPC or trigger an event
-                agent.isStopped = true;
-            }
+            1 => path1Waypoints,
+            2 => path2Waypoints,
+            3 => path3Waypoints,
+            4 => path4Waypoints,
+            _ => null
+        };
+
+        if (waypoints != null && currentWaypoint < waypoints.Length)
+        {
+            agent.SetDestination(waypoints[currentWaypoint].position);
         }
         else
         {
-            if (currentWaypoint < path2Waypoints.Length)
+            if (chosenPath == 2 || chosenPath == 3)
             {
-                agent.SetDestination(path2Waypoints[currentWaypoint].position);
+                // Destroy NPC if path is 2 or 3
+                Destroy(gameObject);
+
+                // Notify NPCManager to spawn a new NPC
+                NPCManager.Instance.OnNPCDestroyed();
             }
             else
             {
-                // Path complete, you can stop the NPC or trigger an event
+                // Path complete, stop NPC
                 agent.isStopped = true;
             }
         }
