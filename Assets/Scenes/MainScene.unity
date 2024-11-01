@@ -3667,6 +3667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkGood: 0
+  lightController: {fileID: 0}
 --- !u!4 &383545436 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1fa092ddd0b7c384e95c720a3a42b968, type: 3}
@@ -12618,6 +12619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkGood: 1
+  lightController: {fileID: 0}
 --- !u!1 &1179865550
 GameObject:
   m_ObjectHideFlags: 0
@@ -18901,6 +18903,10 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_Name
       value: XR Device Simulator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
