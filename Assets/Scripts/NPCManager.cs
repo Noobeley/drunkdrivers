@@ -3,47 +3,51 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
-    public GameObject[] npcs; // Array of NPC prefabs
-    private int currentNPCIndex = 0; // Index of the current NPC
-    private NPCPath currentNPCPath; // Reference to the current NPC's path
+    public GameObject[] npcs; // Array of NPC GameObjects
+    private int currentNpcIndex = 0;
+    private NPCPath currentNPCPath;
 
-    private void Start()
+    public void StartNPCSequence()
     {
-        // Deactivate all NPCs at the start
-        foreach (GameObject npc in npcs)
+        if (currentNpcIndex == 0) // Start only once
         {
-            npc.SetActive(false);
+            StartCoroutine(ManageNPCsSequentially());
         }
     }
 
-    public void ActivateNextNPC()
+    private IEnumerator ManageNPCsSequentially()
     {
-        if (currentNPCIndex < npcs.Length)
+        while (currentNpcIndex < npcs.Length)
         {
-            // Activate the current NPC
-            GameObject npc = npcs[currentNPCIndex];
-            npc.SetActive(true);
+            GameObject currentNPC = npcs[currentNpcIndex];
+            currentNPC.SetActive(true); // Activate NPC
 
-            // Get the NPCPath component and set up the NPC's movement
-            currentNPCPath = npc.GetComponent<NPCPath>();
-            if (currentNPCPath != null)
+            currentNPCPath = currentNPC.GetComponent<NPCPath>();
+            if (currentNPCPath == null)
             {
-                currentNPCPath.enabled = true; // Ensure the path component is enabled
-                currentNPCPath.ResetPath(); // Reset the path to the beginning
+                Debug.LogError("NPCPath component not found on NPC GameObject.");
+                yield break;
             }
 
-            currentNPCIndex++; // Move to the next NPC index
+            currentNPCPath.StartInitialPath();
+
+            // Wait for this NPC to complete the selected path
+            while (!currentNPCPath.IsPathCompleted())
+            {
+                yield return null;
+            }
+
+            // Deactivate the NPC and move to the next
+            currentNPC.SetActive(false);
+            currentNpcIndex++;
         }
     }
 
-    private void Update()
+    public void ContinueCurrentNPC(int pathNumber)
     {
-        // Check if the current NPC's path is completed
-        if (currentNPCPath != null && currentNPCPath.IsPathCompleted())
+        if (currentNPCPath != null)
         {
-            // Deactivate the current NPC and activate the next one
-            currentNPCPath.gameObject.SetActive(false); // Deactivate the current NPC
-            ActivateNextNPC(); // Activate the next NPC
+            currentNPCPath.SetPath(pathNumber); // Set the path based on player's selection
         }
     }
 }

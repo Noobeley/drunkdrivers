@@ -4,25 +4,45 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class NPCSpawner : MonoBehaviour
 {
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable interactable;
-    public NPCManager npcManager; // Reference to the NPCManager to spawn NPCs
+    private NPCManager npcManager;
 
-    private void Awake()
+    void Awake()
     {
         interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
-        
-        // Subscribe to the select event
-        interactable.selectEntered.AddListener(OnSelect);
+
+        // Set up the event listener for VR interaction
+        if (interactable != null)
+        {
+            interactable.selectEntered.AddListener(OnSelect);
+        }
+        else
+        {
+            Debug.LogError("XRSimpleInteractable component not found on this GameObject.");
+        }
+
+        // Get a reference to the NPCManager in the scene
+        npcManager = FindObjectOfType<NPCManager>();
+        if (npcManager == null)
+        {
+            Debug.LogError("NPCManager component not found in the scene.");
+        }
     }
 
     private void OnSelect(SelectEnterEventArgs args)
     {
-        // When the box is clicked, spawn the first NPC
-        npcManager.ActivateNextNPC();
+        // Start the NPC sequence when the VR interactable is selected
+        if (npcManager != null)
+        {
+            npcManager.StartNPCSequence();
+        }
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe from the event to prevent memory leaks
-        interactable.selectEntered.RemoveListener(OnSelect);
+        if (interactable != null)
+        {
+            interactable.selectEntered.RemoveListener(OnSelect);
+        }
     }
 }
+

@@ -3,27 +3,25 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PathActivator : MonoBehaviour
 {
-    public NPCPath npcPath; // Reference to the NPCPath component
-    public int pathToActivate; // Specify which path to activate (1 to 4)
-
-    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable interactable;
+    public int pathNumber; // Set this in the Inspector for each object (2 for Path 2, 3 for Path 3)
+    private NPCManager npcManager;
 
     private void Awake()
     {
-        interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
-        interactable.selectEntered.AddListener(OnSelect);
-    }
-
-    private void OnSelect(SelectEnterEventArgs args)
-    {
-        if (npcPath != null)
+        npcManager = FindObjectOfType<NPCManager>();
+        var interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
+        if (interactable != null)
         {
-            npcPath.ActivatePath(pathToActivate);
+            interactable.selectEntered.AddListener(OnSelectEntered);
+        }
+        else
+        {
+            Debug.LogError("XRSimpleInteractable component missing.");
         }
     }
 
-    private void OnDestroy()
+    private void OnSelectEntered(SelectEnterEventArgs args)
     {
-        interactable.selectEntered.RemoveListener(OnSelect);
+        npcManager.ContinueCurrentNPC(pathNumber); // Continue the current NPC on the chosen path
     }
 }
