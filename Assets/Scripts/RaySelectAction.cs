@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class BreakerBox : MonoBehaviour
+public class RaySelectAction : MonoBehaviour
 {
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable interactable;
     private Renderer objectRenderer;
@@ -18,17 +18,8 @@ public class BreakerBox : MonoBehaviour
 
     private void OnSelect(SelectEnterEventArgs args)
     {
-        // Start the coroutine to wait 5 seconds and then display a debug message
-        StartCoroutine(DelayedAction());
-    }
-
-    private System.Collections.IEnumerator DelayedAction()
-    {
-        // Wait for 5 seconds
-        yield return new WaitForSeconds(5);
-
-        // Display a debug message
-        Debug.Log("Interaction worked after delay!");
+        // Example action: Change the color to yellow
+        objectRenderer.material.color = Color.yellow;
     }
 
     private void OnDestroy()
@@ -36,4 +27,4 @@ public class BreakerBox : MonoBehaviour
         // Unsubscribe from the event
         interactable.selectEntered.RemoveListener(OnSelect);
     }
-}
+}  
