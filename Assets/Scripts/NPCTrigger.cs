@@ -1,9 +1,9 @@
 using UnityEngine;
-
 public class NPCTrigger : MonoBehaviour
 {
     // Array of GameObjects representing the cubes to show
     public GameObject[] cubes;
+    public float ID;
 
     // Hide all cubes initially
     void Start()
@@ -30,6 +30,7 @@ public class NPCTrigger : MonoBehaviour
 
             // Show the correct cube based on NPC's ID
             ShowCorrectCube(npc.npcID);
+            ID = npc.npcID;
         }
     }
 

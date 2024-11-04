@@ -9,9 +9,6 @@ public class Checkbutton : MonoBehaviour
 
     public void Start()
     {
-        GameObject scan = GameObject.Find("base scan");
-        xray_script = scan.GetComponent<Xray>();
-        scan.active = false;
     }
     private void Awake()
     {
@@ -25,6 +22,8 @@ public class Checkbutton : MonoBehaviour
 
     private void OnSelect(SelectEnterEventArgs args)
     {
+        Debug.Log("Starting Xray");
+        Xray xray_script = GameObject.Find("Cube.005").GetComponent<Xray>();
         xray_script.DoXray();
     }
 
