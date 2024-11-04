@@ -5,6 +5,7 @@ public class BreakerBox : MonoBehaviour
 {
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable interactable;
     private Renderer objectRenderer;
+    private LightController lightController;
 
     private void Awake()
     {
@@ -28,7 +29,12 @@ public class BreakerBox : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         // Display a debug message
-        Debug.Log("Interaction worked after delay!");
+        GameObject triggerBox = GameObject.Find("wall (4)");
+        lightController = triggerBox.GetComponent<LightController>();
+        if (lightController != null)
+        {
+            lightController.ResetLights();
+        }
     }
 
     private void OnDestroy()
