@@ -11,8 +11,8 @@ public class Xray : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void DoXray()
     {
-        
+        Debug.Log("Xray done");
     }
 }
