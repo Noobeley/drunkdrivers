@@ -13,11 +13,14 @@ public class NPCPath : MonoBehaviour
     private bool pathSelected = false; // Set true when a path is chosen
     private Transform[] currentPathWaypoints; // The currently selected path waypoints
 
+    private Animator animator;
+
     private bool isPathComplete = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     public void StartInitialPath()
@@ -26,6 +29,7 @@ public class NPCPath : MonoBehaviour
         currentPathWaypoints = path1Waypoints;
         currentWaypoint = 0;
         agent.SetDestination(currentPathWaypoints[currentWaypoint].position);
+        animator.SetBool("isIdle", false);
     }
 
     void Update()
@@ -34,6 +38,7 @@ public class NPCPath : MonoBehaviour
         if (!pathSelected && Vector3.Distance(transform.position, branchPoint.position) < 1f)
         {
             agent.isStopped = true; // Pause at the branch point
+            animator.SetBool("isIdle", true);
         }
         else if (pathSelected && !agent.pathPending && agent.remainingDistance < 0.5f)
         {
@@ -67,6 +72,7 @@ public class NPCPath : MonoBehaviour
         if (currentWaypoint < currentPathWaypoints.Length)
         {
             agent.SetDestination(currentPathWaypoints[currentWaypoint].position);
+            animator.SetBool("isIdle", false);
         }
         else
         {

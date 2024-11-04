@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GoodRoomTrigger : MonoBehaviour
 {
-    [SerializeField] private bool checkGood = true; // Set this room to expect Good NPCs if true
+    [SerializeField] private bool checkGood = false; // Set this room to expect Good NPCs if true
     private LightController lightController;
 
     public void Start()
