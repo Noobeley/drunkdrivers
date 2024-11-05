@@ -4,15 +4,17 @@ using UnityEngine.UI;
 public class LightController : MonoBehaviour
 {
     [SerializeField] private Light[] roomLights; // Array of lights to control in the room
-    public bool isSabotaged  = false; // Track sabotage state
+    public bool isSabotaged = false; // Track sabotage state
     public Image warningImage;
 
     void Start()
     {
-        warningImage.gameObject.SetActive(false);
+        warningImage.gameObject.SetActive(false); // Initially hide the warning image
     }
+
     void Update()
     {
+        // Call TurnOffLights() when the room is sabotaged
         if (isSabotaged)
         {
             TurnOffLights();
@@ -26,11 +28,11 @@ public class LightController : MonoBehaviour
         {
             foreach (Light light in roomLights)
             {
-                light.enabled = false;
-                warningImage.gameObject.SetActive(true);
+                light.enabled = false; // Turn off each light
             }
+            warningImage.gameObject.SetActive(true); // Show the warning image
             Debug.Log("Lights turned off due to sabotage.");
-            isSabotaged = false;
+            isSabotaged = false; // Reset sabotage state after turning off lights
         }
     }
 
@@ -38,16 +40,22 @@ public class LightController : MonoBehaviour
     public void ResetLights()
     {
         Debug.Log("Calling reset lights");
-        if (isSabotaged)
+        if (!isSabotaged) // Check if the lights need to be reset
         {
             foreach (Light light in roomLights)
             {
-                light.enabled = true;
-                warningImage.gameObject.SetActive(false);
+                light.enabled = true; // Turn on each light
             }
+            warningImage.gameObject.SetActive(false); // Hide the warning image
             Debug.Log("Lights reset by player.");
-            isSabotaged = false;
         }
+    }
+
+    // Method to trigger sabotage
+    public void TriggerSabotage()
+    {
+        isSabotaged = true; // Set sabotage state to true
+        Debug.Log("Sabotage triggered!");
     }
 }
 
