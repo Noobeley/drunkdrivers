@@ -6,6 +6,7 @@ public class LightController : MonoBehaviour
     [SerializeField] private Light[] roomLights; // Array of lights to control in the room
     public bool isSabotaged = false; // Track sabotage state
     public Image warningImage;
+    public GameObject breakerbox;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class LightController : MonoBehaviour
     {
         if (isSabotaged)
         {
+            PlayBreakerBoxSound();
             foreach (Light light in roomLights)
             {
                 light.enabled = false; // Turn off each light
@@ -48,6 +50,7 @@ public class LightController : MonoBehaviour
             }
             warningImage.gameObject.SetActive(false); // Hide the warning image
             Debug.Log("Lights reset by player.");
+            StopBreakerBoxSound();
         }
     }
 
@@ -56,6 +59,24 @@ public class LightController : MonoBehaviour
     {
         isSabotaged = true; // Set sabotage state to true
         Debug.Log("Sabotage triggered!");
+    }
+
+    public void PlayBreakerBoxSound()
+    {
+        AudioSource audioSource = breakerbox.GetComponent<AudioSource>();
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
+
+    public void StopBreakerBoxSound()
+    {
+        AudioSource audioSource = breakerbox.GetComponent<AudioSource>();
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }
 

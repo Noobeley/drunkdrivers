@@ -5,6 +5,7 @@ public class CheckGood : MonoBehaviour
     [SerializeField] private bool checkGood = false; // Set this room to expect Good NPCs if true
     private LightController lightController;
 
+
     public void Start()
     {
         GameObject triggerBox = GameObject.Find("wall (4)"); // Find the GameObject with the LightController
@@ -38,6 +39,7 @@ public class CheckGood : MonoBehaviour
         {
             Debug.Log("LightController is assigned and will trigger TurnOffLights."); // Confirm controller exists
             lightController.TriggerSabotage(); // Call the method to trigger sabotage
+
         }
         else
         {
