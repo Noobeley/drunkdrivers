@@ -1,0 +1,24 @@
+Magnitude
+anything moving direction based needs to be normalized because of 
+A vector is 1 direction
+A dot product calculates how much the opposite two vectors are
+
+a dot product can be used to calculate if something is to the left or right of something
+2vnn v.n. to calculate reflections
+
+do a dot product and rotate the object so it's moving the right way you want it to
+
+Matrices math:
+A cross product calculates another variable JKL
+Multiply
+a.x multiply by b.y minus
+
+
+good tutorials to spark solution focused programming, specifically unity
+pick case
+
+1,2 and 5 are most difficult cases
+
+Check his mail for his GitHub,also photos has examples
+
+thomas mook minor in japan

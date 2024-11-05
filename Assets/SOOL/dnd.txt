@@ -1,0 +1,29 @@
+Brad Halfling barbarian
+Aaron lizard barbarian
+Zirell rogue
+
+  8
+11  10
+  20
+
+6
+
+
+
+
+
+
+1 refugees
+2 convex criminals
+3 detective agency
+4 diamond seals
+
+1 goblin 1 player, double the goblins to make it a hard challenge
+
+Zirael elf rogue 14 9hp9
+Brad halfling barbarian 14 14 hp14
+Aaron lizard barbarian 15 13hp13
+Gab bird bard 13 10hp10
+
+
+zireal, gab, brad, wolf, goblinbig, goblinsmall, aaron 

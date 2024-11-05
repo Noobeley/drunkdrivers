@@ -1,0 +1,3 @@
+gameobjects blue
+scripts red
+UI green

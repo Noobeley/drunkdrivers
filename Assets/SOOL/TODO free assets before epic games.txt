@@ -1,0 +1,14 @@
+why are we choosing the requirements, choosing an abstract vs world map for the radar feature for example
+
+genuine trouble, mini assignment to make a rough start.
+
+If uml: Dont know how to get to even a basic uml diagram for example
+
+
+
+assets, packages and project settings
+
+lecturer checks code if its working, open scripts that are changed, block comments around what you added
+
+"i broke the public integer design choice in FPS game"
+

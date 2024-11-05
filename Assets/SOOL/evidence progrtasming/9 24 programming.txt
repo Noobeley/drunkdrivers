@@ -1,0 +1,10 @@
+header has declarations
+CPP has definitions
+
+IEnumerator is an interface
+
+Seperate file for interfaces
+
+
+
+UML diagram use color coding

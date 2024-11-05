@@ -1,0 +1,39 @@
+ID card, picture, date, 
+
+
+Failure consequence
+gamified punishment, system check for ID correctness, and what the player does
+
+xr grabbable
+snap socket on blackboard material powerpoint
+canvas hoilds the information
+
+invisible finish screen, values get added to it over time, and at the end of the day the canvas is shown
+
+id card has manager on it, drag it to location on desk
+
+
+5 immigrants, list of characters, index0, move character towards position, make id card visible depending on the character
+while sequence is paused until the player acts 
+
+2 right
+3 wrong
+
+vr object returning to a specific location if it is thrown but not held
+
+
+big floor with item check trigger above void
+
+
+--
+
+ART
+
+Point light only shows up with 200 intensity
+
+
+you need to bake global illumination to see emissive lights
+
+importing skybox picture: set texture shape to Cube
+
+Generate lightmap UVs needs to always be on

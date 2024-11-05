@@ -1,0 +1,92 @@
+
+
+assignment: feature for a game
+
+ILSpy to decompile unity games, icharpcode
+
+glasslessgirlapionline experience
+fatssquareglasses lambda
+
+event or data
+NEED UML (schematic diagram of code) (generate vector of diagram gpt? NO, probably generate attributes and operations for each script and put them in the diagram)
+
+1. Brainstorm
+2. Selection, belongs, doesn't belong
+3. Model dictionary
+4. Associations
+5. Attributes
+6. Operations
+7. Generalize
+8. Iterate
+
+Intermediate layer, 
+
+Message system in a message managaer, collection of all objects, finds the objects and sends the cracked signal to that object
+Programming Game AI by example BOOK!!
+
+Player has oncollisionenter when passing pipes
+Use the animator for UI
+
+Player
+Attribute: Gravity
+Operation: Flapping, Die/collision with pipe, Move
+Fall: and then you fall
+
+Scoremanager
+Attribute: Score, medals
+
+Paralexeffect
+
+Pipespawner:
+Attribute: Pipe, height difference
+
+API
+API: Leaderboard
+
+Soundmanager
+Soundeffects
+Attribute: Sound to play
+Operation: Play sound
+
+Gamemanager
+Quit: quit button
+
+digitdogs
+Options
+
+Preloader
+
+State machine object diagram Activity, flow, usecase, sequence, behaviour tree, 1* star 
+
+Static is ONLY for gamemanager
+
+Every script needs EventSound in it and call a separate event for each sound
+
+Generalizartion and association is what I need for arrows and lines
+
+9 to copy Update into generalization connections
+
+Create one timer class so you don't have to copy paste code
+
+Create a parameter and send to that parameter, don't create a separate
+
+game manager should dontdestroyonload so it persists across scenes
+
+    private bool IsRightType(Type type1, Type type2)
+    {
+        return type1 == type2;
+    }
+= predicate
+
+lambda is quick way to dfine a variable, to define an ionput
+define it as an x, then lambda, then x times x
+, it should be a Boolean, a true or false
+
+lambda optimizes lists by doing the filtering for you
+
+ABSTRCT means no definition, it forces people to implement the function you mention
+VIRTUAl is ?
+
+assembly definitions, each folder has one, updating a file inside a folder with an assembly definition reloads all scripts in the folder, they basically control a folder, they don't intercommunicate
+
+fps.Editor

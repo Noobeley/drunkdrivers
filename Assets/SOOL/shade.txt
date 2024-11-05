@@ -1,0 +1,1 @@
+For driving game from game jam, use curved world SHADER addon instead of physically moving the world

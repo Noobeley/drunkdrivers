@@ -1,0 +1,109 @@
+Search for c# programming lessons of lectures, sort by newest youtube
+Pascal cnaming, lessonOne instead of LessonOne
+ALWAYS WONDERING: am i coding right?
+IS there a more efficient way than having the camera teleport to the moving object?, and what about throwing 
+
+requirecomponent automatically adds component when you add a script to something
+
+Header, serializefield+tooltip
+
+control rr changes all variables (refactor)
+control r control m makes a new Method
+
+interpolated string = $
+
+unsigned ints only positive, it doesn't have a signing bit for negative numbers
+
+avoiding assembly definitions pointing at eachother. You get a circular dependency
+
+every time you call a function it is added to the stack
+
+public unityevent oncountcomplete
+
+
+a static function makes it be the same in every instance of that script
+
+arrays have a static size but lists can be dynamic size
+
+in debugging (attach to unity)
+shift f5 stops, f5 start/skip to new breakpoint
+control p starts within unity
+f11 steps into
+
+
+you create inputactions (new unity input system)
+
+Awake = instanced
+
+Constructors should not be used in unity, use awake instead
+
+fixedupdate is for things that are heavy like pathgeneration and physics
+
+Time Scale within time in project settings. never put it into things
+
+[RequireComponent(typeof)rigidbody)]
+Rigidbody rb;
+Vector3 velocity;
+float speed;
+float timescale;
+
+
+in start rb=getcomponent<rigidbody>, never in update
+
+fixedupdate
+rb.velocioty =  speed * timescale * velocity;
+
+operator overloading 
+
+velocity -
+new vector3
+input.getaxis("horizontal")
+input.getaxis("vertical")
+
+OnApplicationFocus is for phones or alt tabbing
+OnVisibile when it enters the visibile viewport
+
+!!!!ECS!!!! Data orientated programming??
+
+transform.translate only when no physics
+
+control K control C to comment
+control shift backslash comment
+alt shift down same line
+
+Overload so a script by default counts to 100 for example, but if you pass in a number it counts to that
+
+/// = summary
+SOLID workful:
+single responsibility principle, a player, enemy and movement should be different classes
+
+Access modifier. Protected means only inherited objects have access to it
+
+Control k control d to fix line space
+
+
+transform.translate only when no physics unless you attach it to something that is physics then transform.translate is fine
+
+
+Instantiate:
+
+Try
+Catch system.exception
+Throw new notimplementedexception to prevent crashes
+
+
+a class does things
+
+but a struct keeps things the same
+
+Eventmanager in the example project is most complex. You can inherit the gameevent. There is a list of events that can be triggered in Events.cs
+
+You can use #define to enable or disable sections
+
+script execution order
+Order of priority. Use events in unity, define objects instead
+
+MAKE ASSEMBLIES INSIDE SCRIPTS FOLDER subfolders
+
+apply single repsonbility principle
+Use unityevent (or unity action if just done within code)

@@ -1,0 +1,37 @@
+DECIDING!
+1. Level number
+Either:
+Unlock a power at certain levels= 4, 7
+Independent system of skill points= a currency to spend on upgrades you get by levelling up
+
+2. Item system
+Object counter, 3 types of objects
+these objects are in different quantities in the world, collidng removes and adds to counter
+The UI shows these objects with the amount behind it in a UI
+persistent system, if you drop them again,. save locations of lao
+
+
+
+3. mario movement
+Animations imported from mixamo
+each animation is triggered by detecting if you're moving, otherwise hold last frame (so it doesn't when you keep running into a wall) Can i use iStep?
+When crouching in the crouch state, climbing in a climb state, pushing in a push state and the object IS moving
+
+4. camera
+"Move from animation to follow and back"= so it follows a player, and when you press a button it looks at a cutscene?, RECORD AND PLAYBACK
+Recording feature to replay. Is a video file enough or do i have to replay it in-engine like overwatch replays?
+
+5. Reusable weapon
+Pellets moving from an origin point. Amount, speed all determined on the weapon type. Turrets means auto-aim right? So i also have to program AI tracking for it.
+Rockets should explode right? So smoke animations?
+Programmable as variables is enough?
+CHANGE TURRETS BASED ON PROEPRY, DIFFERENT BORDERLADNS TURRET ATTACHEMTNS
+6. quests
+Talk to characters, pressing e when near one and then moving into cutscene and pressing buttons to skip through text boxes right? is diverging dialogues paths needed?
+Quests, is talking to different npcs enough just for quests?
+Quest log is UI and toggles from the quest system which checks if npcs are talked to, or do npcs send info that they were talked to TO the quest system?
+
+
+User guide 400 words is TDD?
+
+MAKE GAME NOT CRASH
