@@ -38,5 +38,3 @@ Mechanics are what you have to build,
 player choices are dynamics
 freedom of choice is aesthetic
 
-
-CLA, MDA, magic circle relation to project, kawa's classification of games, theory of pervasiveness, provoke future scenariuop using exercises like 4 quadrants exercide from classes what changes is contextual factors change

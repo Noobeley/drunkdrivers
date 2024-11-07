@@ -1,0 +1,40 @@
+M
+Augmentation Comparing
+Moral Choices
+
+Document Inspection
+The alarm going off = outcome
+An immigrant presenting papers = rules
+The electricity getting hacked = quantifiable outcome you can prevent it
+
+D
+Tension and Suspense
+Moral Dilemma
+Power and Inequality
+
+Turning the alarm on when a suspicious person shows up = artificial conflict
+Comparing papers between the immigrant and the factual info = conflict
+Fixing electricity = players
+
+A
+Dystopian Atmosphere
+Class Disparity
+Emotional Engagement
+Alarm sound and lights = system
+ = system
+Fear of darkness = system
+Aesthetics is emotion
+game needs to provoke thought about core assumptions
+currently competition and chance is popular, before it might've simulation, later might be vertigo
+CLA, MDA, magic circle relation to project, kawa's classification of games, theory of pervasiveness, provoke future scenariuop using exercises like 4 quadrants exercide from classes what changes is contextual factors change
+
+
+ 1 core game loop that shows interesting assumption
+tension of immigration problem vs do youy have a set identity if  you can change everything
+miogration needs identity usually, not in future
+
+Stretching spatially = Having a QR code in the real world that makes elements of the game pop up
+Temporally = The game runs in the background and at any point a shift can start and you will have to stand still and open up your immigration booth
+Socially = AR element where you scan real people moving in front of you, anyone walking past you can get flagged as suspicious and will be asked to participate in the game and take on the role of an immigrant
+
+New CLA: Easier to carry VR headsets

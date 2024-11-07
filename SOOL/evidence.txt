@@ -1,5 +1,6 @@
 TODO: Draw game logo on paper
 
+
 evidence:
 particles in own game, road generation (level) in own game
 
@@ -15,4 +16,4 @@ me and the booth show the experience, make sure to show passports DEMO PRESENTAT
 tension of immigration problem vs do youy have a set identity if  you can change everything
 miogration needs identity usually, not in future
 
-game idea, game idea is exploring an assumption < MAIL TEACHER JOHN
+game idea, game idea is exploring an assumption
